@@ -1,10 +1,12 @@
 ﻿using Mediator;
 using Microsoft.AspNetCore.Mvc;
+using SampleRestApi.Application.Dogs.Commands.CreateDog;
+using SampleRestApi.Application.Dogs.Queries.GetAllDogs;
 using SampleRestApi.Persistence;
 
 namespace SampleRestApi.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     [ApiController]
     public class DogController : ControllerBase
     {
@@ -18,9 +20,23 @@ namespace SampleRestApi.WebApi.Controllers
         }
 
         [HttpGet("ping")]
-        public IActionResult Ping() 
+        public IActionResult Ping()
         {
             return Ok("Dogs house service. Version 1.0.1");
+        }
+
+        [HttpPost("dog")]
+        public async Task<IActionResult> CreateDog([FromBody] CreateDogRequest createDogRequest)
+        {
+            var result = await _mediator.Send(createDogRequest);
+            return Ok(result);
+        }
+
+        [HttpGet("dogs")]
+        public async Task<IActionResult> GetAllDogs([FromQuery] GetAllDogsRequest getAllDogsRequest)
+        {
+            var result = await _mediator.Send(getAllDogsRequest);
+            return Ok(result);
         }
     }
 }

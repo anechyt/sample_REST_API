@@ -8,12 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Mediator.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SampleRestApi.Application\SampleRestApi.Application.csproj" />
     <ProjectReference Include="..\SampleRestApi.Persistence\SampleRestApi.Persistence.csproj" />
   </ItemGroup>
 
