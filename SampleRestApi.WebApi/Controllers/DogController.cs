@@ -1,5 +1,6 @@
 ﻿using Mediator;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SampleRestApi.Application.Dogs.Commands.CreateDog;
 using SampleRestApi.Application.Dogs.Queries.GetAllDogs;
 using SampleRestApi.Persistence;
@@ -8,6 +9,7 @@ namespace SampleRestApi.WebApi.Controllers
 {
     [Route("api/")]
     [ApiController]
+    [EnableRateLimiting("fixed")]
     public class DogController : ControllerBase
     {
         private readonly IMediator _mediator;

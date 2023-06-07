@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Mediator;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace SampleRestApi.Application.Infrastructure.Extensions
 {
@@ -10,6 +13,8 @@ namespace SampleRestApi.Application.Infrastructure.Extensions
             {
                 options.ServiceLifetime = ServiceLifetime.Scoped;
             });
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(MessageValidatorBehaviour<,>));
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }
