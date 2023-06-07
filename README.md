@@ -16,3 +16,6 @@ Both sorting and pagination work together.
 If no data is entered for sorting and/or pagination the API will return all records from the database
 
 SampleRestApi.Tests :  In this class libraryr we create our test.
+
+Mapper - https://github.com/riok/mapperly
+Mediator - https://github.com/martinothamar/Mediator
